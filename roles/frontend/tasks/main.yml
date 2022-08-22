@@ -1,5 +1,7 @@
-- name: Setup Hostname
-  ansible.builtin.shell: set-hostname frontend
+- name: Import Common role
+  ansible.builtin.import_role:
+    name: common
+
 
 - name: Install Nginx
   ansible.builtin.yum:
