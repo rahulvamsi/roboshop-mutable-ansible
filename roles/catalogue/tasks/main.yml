@@ -34,6 +34,19 @@
     path: /home/roboshop/catalogue
   become_user: roboshop
 
+- name: Copy Catalogue SystemD file
+  ansible.builtin.template:
+    src: systemd.service
+    dest: /etc/systemd/system/catalogue.service
+
+- name: Restart Catalogue
+  ansible.builtin.systemd:
+    name: cataloue
+    state: restarted
+    enabled: yes
+    daemon-reload: yes
+
+
 
 
 
