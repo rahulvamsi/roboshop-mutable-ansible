@@ -21,6 +21,6 @@
 
 - name: print
   debug:
-    msg: "{{mysql_log['content']}}"
+    msg: "{{mysql_log['content'] | b64decode}}"
 
 
