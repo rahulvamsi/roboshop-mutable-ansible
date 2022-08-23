@@ -34,6 +34,6 @@
         DEFAULT_PASS: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') |split(' ') | last }}"
 
     - name: Change MySQL
-      ansible.builtin.shell: echo "alter user 'root'@'localhost' identified with mysql_native_password by {{MYSQL_PASSWORD}}" | mysql --connect-expired-password -uroot -p{{DEFAULT_PASS}}
+      ansible.builtin.shell: echo "alter user 'root'@'localhost' identified with mysql_native_password by {{MYSQL_PASSWORD}}" | mysql --connect-expired-password -uroot -p"{{DEFAULT_PASS}}"
 
 
