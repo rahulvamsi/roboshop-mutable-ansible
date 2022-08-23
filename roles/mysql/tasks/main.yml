@@ -25,14 +25,17 @@
   ansible.builtin.set_fact:
     DEFAULT_PASS: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(' ') |split(' ') | last }}"
 
-- name: Get MySQL version to check the DB Connection
-  mysql_info:
-    login_user: root
-    login_password: "{{MYSQL_PASSWORD}}"
-    filter: version
-  register: mysql_conn_stat
-  ignore_errors: yes
 
-- name: Print
-  debug:
-    msg: "{{mysql_conn_stat}}"
+- name: Handle the error
+  block:
+    - name: Get MySQL version to check the DB Connection
+      mysql_info:
+        login_user: root
+        login_password: "{{MYSQL_PASSWORD}}"
+        filter: version
+  rescue:
+    - name: Get MySQL version to check the DB Connection
+      mysql_info:
+        login_user: root
+        login_password: "{{DEFAULT_PASS}}"
+        filter: version
