@@ -34,8 +34,11 @@
         login_password: "{{MYSQL_PASSWORD}}"
         filter: version
   rescue:
-    - name: Get MySQL version to check the DB Connection
-      mysql_info:
+    - name: Change MySQL
+      mysql_user:
+        name: root
+        password: "{{MYSQL_PASSWORD}}"
+        update_password: always
+        state: present
         login_user: root
         login_password: "{{DEFAULT_PASS}}"
-        filter: version
