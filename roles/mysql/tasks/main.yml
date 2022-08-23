@@ -21,6 +21,6 @@
 
 - name: print
   debug:
-    msg: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | join(" ") }}"
+    msg: "{{mysql_log['content'] | b64decode | regex_findall('.*temporary password.*') | split(' ') }}"
 
 
