@@ -9,7 +9,7 @@
 - name: Install NodeJS dependencies
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}
-#  become_user: roboshop
+  become_user: roboshop
 
 - name: Include SystemD
   ansible.builtin.include_role:
