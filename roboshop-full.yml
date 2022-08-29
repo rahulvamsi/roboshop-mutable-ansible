@@ -28,24 +28,30 @@
   become: yes
   roles:
     - mysql
-#- name: Setup RoboShop
-#  hosts: SHIPPING
-#  become: yes
-#  roles:
-#    - shipping
-#- name: Setup RoboShop
-#  hosts: RABBITMQ
-#  become: yes
-#  roles:
-#    - rabbitmq
-#- name: Setup RoboShop
-#  hosts: PAYMENT
-#  become: yes
-#  roles:
-#    - payment
+- name: Setup RoboShop
+  hosts: SHIPPING
+  become: yes
+  roles:
+    - shipping
+- name: Setup RoboShop
+  hosts: RABBITMQ
+  become: yes
+  roles:
+    - rabbitmq
+- name: Setup RoboShop
+  hosts: PAYMENT
+  become: yes
+  roles:
+    - payment
 - name: Setup RoboShop
   hosts: CART
   become: yes
   roles:
     - cart
 
+# - dispatch
+#- name: Setup RoboShop
+#  hosts: DISPATCH
+#  become: yes
+#  roles:
+#    - dispatch
