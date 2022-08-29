@@ -49,9 +49,9 @@
   roles:
     - cart
 
-# - dispatch
-#- name: Setup RoboShop
-#  hosts: DISPATCH
-#  become: yes
-#  roles:
-#    - dispatch
+ - dispatch
+- name: Setup RoboShop
+  hosts: DISPATCH
+  become: yes
+  roles:
+    - dispatch
