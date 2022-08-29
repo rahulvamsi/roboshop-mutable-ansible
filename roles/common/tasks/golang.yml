@@ -1,0 +1,21 @@
+- name: Install Maven
+  ansible.builtin.yum:
+    name: golang
+    state: installed
+
+- name: Include App Pre Setup
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: app-pre-setup
+
+- name: Install golang dependencies
+  ansible.builtin.shell: go mod init dispatch && go get && go build
+  args:
+      chdir: /home/roboshop/{{COMPONENT}}
+  become_user: roboshop
+
+
+- name: Include SystemD
+  ansible.builtin.include_role:
+    name: common
+    tasks_from: systemd

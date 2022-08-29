@@ -18,3 +18,5 @@ redis-dev.roboshop.internal
 mongodb-dev.roboshop.internal
 [MYSQL]
 mysql-dev.roboshop.internal
+[DISPATCH]
+dispatch-dev.roboshop.internal
