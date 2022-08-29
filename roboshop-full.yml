@@ -49,7 +49,7 @@
   roles:
     - cart
 
- - dispatch
+    - dispatch
 - name: Setup RoboShop
   hosts: DISPATCH
   become: yes
