@@ -1,8 +1,6 @@
 - name: Setup Hostname
   ansible.builtin.shell: set-hostname {{COMPONENT}}
 
-
-
 - name: Install Prometheus Node Exporter
   ansible.builtin.include_role:
     name: prometheus

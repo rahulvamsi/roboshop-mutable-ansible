@@ -4,11 +4,11 @@
     dest: /opt/prometheus/prometheus.yml
   notify: Restart prometheus
 
-#- name: Copy Alert Rules
-#  ansible.builtin.template:
-#    src: alert-rules.yml
-#    dest: /opt/prometheus/alert-rules.yml
-#  notify: Restart prometheus
+- name: Copy Alert Rules
+  ansible.builtin.template:
+    src: alert-rules.yml
+    dest: /opt/prometheus/alert-rules.yml
+  notify: Restart prometheus
 
 - name: Start prometheus
   ansible.builtin.systemd:
@@ -22,21 +22,21 @@
     delay: 10
     timeout: 30
 
-#- name: Copy Alert Manager Config
-#  ansible.builtin.template:
-#    src: alertmanager.yml
-#    dest: /opt/alertmanager/alertmanager.yml
-#
-#- name: Restart Alert Manager
-#  ansible.builtin.systemd:
-#    name: alertmanager
-#    state: restarted
+- name: Copy Alert Manager Config
+  ansible.builtin.template:
+    src: alertmanager.yml
+    dest: /opt/alertmanager/alertmanager.yml
 
-#- name: Wait for Alertmanager to start
-#  ansible.builtin.wait_for:
-#    port: 9093
-#    delay: 10
-#    timeout: 30
+- name: Restart Alert Manager
+  ansible.builtin.systemd:
+    name: alertmanager
+    state: restarted
+
+- name: Wait for Alertmanager to start
+  ansible.builtin.wait_for:
+    port: 9093
+    delay: 10
+    timeout: 30
 
 
 
