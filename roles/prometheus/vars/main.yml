@@ -1,1 +1,1 @@
-COMPONENTS: [ user, cart, catalogue, payment, shipping, nginx, dispatch]
+COMPONENTS: [ user, cart, catalogue, payment, shipping, nginx, dispatch, mysql, mongodb]
