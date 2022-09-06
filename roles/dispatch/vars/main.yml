@@ -1,2 +1,3 @@
 COMPONENT: dispatch
 APP_TYPE: golang
+LOG_TYPE: raw
