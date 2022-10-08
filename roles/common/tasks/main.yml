@@ -1,3 +1,6 @@
+- name: Clean labauto
+  shell: sudo labauto clean
+
 - name: Setup Hostname
   ansible.builtin.shell: set-hostname {{COMPONENT}}
 
