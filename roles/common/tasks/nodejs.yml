@@ -1,18 +1,29 @@
 - name: Setup NodeJS repos
   ansible.builtin.shell: curl -sL https://rpm.nodesource.com/setup_lts.x | bash
 
+- name: Install NodeJS
+  ansible.builtin.yum:
+    name: nodejs
+    state: installed
+
 - name: Include App Pre Setup
   ansible.builtin.include_role:
     name: common
     tasks_from: app-pre-setup
-- name: INSTALL NPM
-  ansible.builtin.yum:
-    name:
-      - npm
-    state: installed
+#- name: INSTALL NPM
+#  ansible.builtin.yum:
+#    name:
+#      - npm
+#    state: installed
 - name: Install NodeJS dependencies
   community.general.npm:
     path: /home/roboshop/{{COMPONENT}}
+  become_user: roboshop
+
+- name: Download PEM file for DocumentDB
+  ansible.builtin.get_url:
+    url: https://s3.amazonaws.com/rds-downloads/rds-combined-ca-bundle.pem
+    dest: /home/roboshop/{{COMPONENT}}/rds-combined-ca-bundle.pem
   become_user: roboshop
 
 - name: Include SystemD
